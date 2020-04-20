@@ -4,7 +4,7 @@
 
 ## Sobre a calculadora
 
-A RNCalculator é o primeiro projeto em React Native desenvolvido por mim, utilizei os conhecimentos adquiridos no Bootcamp da Rocketseat para isso. É possível somar, subtrair, multiplicar, dividir e porcentagem (que divide por 100).
+A RNCalculator é o primeiro projeto utilizando o React Native desenvolvido por mim, utilizei os conhecimentos adquiridos no Bootcamp da Rocketseat para isso. É possível somar, subtrair, multiplicar, dividir e porcentagem (que divide por 100).
 
 ### Como rodar a aplicação?
 
