@@ -1,5 +1,3 @@
-<img alt="RNCalculator" src="https://imgur.com/a/afqTtBi />
-
 <h3 align="center">
   RNCalculator
 </h3>
@@ -14,3 +12,10 @@ Após clonar o repositório/baixar os arquivos, navegue até a pasta e abra no V
 
 **Atenção**: Caso você esteja emulando no iOS, na pasta do seu projeto navegue até a pasta ios executando o comando `cd ios` e depois execute `pod install` para instalar todas as dependências para o iOS.
 
+<h3 align="center">
+  Design
+</h3>
+
+<p align="center">
+  <img alt="RNCalculator" src="https://i.imgur.com/7acThzb.png">
+</p>
