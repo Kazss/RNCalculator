@@ -8,7 +8,7 @@ export default function App() {
   const [total, setTotal] = useState('');
   const [total2, setTotal2] = useState('0');
 
-  // Add number or char
+  // Add number or char -> need put a limit of chars
   function handleAddChar(char){
     if (
        total.slice(-1) === '+' && char === '+' || total.slice(-1) === '+' && char === '-' || 
