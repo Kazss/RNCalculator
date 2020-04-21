@@ -5,63 +5,69 @@ import { View, Text, TouchableOpacity } from 'react-native';
 import styles from './styles';
 
 export default function App() {  
+  
   const [total, setTotal] = useState('');
   const [total2, setTotal2] = useState('0');
-
-  // Add number or char -> need put a limit of chars
+  var aux1 = ['+', '-', '*', '/'];
+  var aux2 = ['', ...aux1];
+  var aux3 = ['.', ...aux2];
+  
+  // Add number or char -> -> its working, but need tests and need put a limit of chars
   function handleAddChar(char){
-    if (
-       total.slice(-1) === '+' && char === '+' || total.slice(-1) === '+' && char === '-' || 
-       total.slice(-1) === '+' && char === '*' || total.slice(-1) === '+' && char === '/' || 
-       total.slice(-1) === '-' && char === '+' || total.slice(-1) === '-' && char === '-' || 
-       total.slice(-1) === '-' && char === '*' || total.slice(-1) === '-' && char === '/' ||
-       total.slice(-1) === '/' && char === '+' || total.slice(-1) === '/' && char === '-' || 
-       total.slice(-1) === '/' && char === '*' || total.slice(-1) === '/' && char === '/' ||
-       total.slice(-1) === '*' && char === '+' || total.slice(-1) === '*' && char === '-' || 
-       total.slice(-1) === '*' && char === '*' || total.slice(-1) === '*' && char === '/')      
-       {return}
-    
-    else if(
-      total.slice(-1) === '' && char === '.' ||total.slice(-1) === '+' && char === '.'||
-      total.slice(-1) === '-' && char === '.'||total.slice(-1) === '*' && char === '.'||
-      total.slice(-1) === '/' && char === '.')      
-      {setTotal(total + '0' + char);}
+    if(aux1.includes(char) === true && aux1.includes(total.slice(-1)) === true){
+      return
+    }
+    else if(char === '.' && aux2.includes(total.slice(-1)) === true){
+      setTotal(total + '0' + char);
+      setTotal2('= ' + total + '0' + char);
+    }
+    else if(aux1.includes(char) === true && total2 === '0'){
+      return
+    }
+    else if(total2 === '0'){
+      setTotal(total + char);
+      setTotal2('= ' + char);
+    }      
+    else if (aux1.includes(char) === true) {       
+      setTotal(total + char);
+    }
+    else {
+      setTotal(total + char);
+      setTotal2('= ' + eval(total + char));
+    }     
+  };    
 
-    else{
-      if(total2 === '0'){
-        
-        setTotal(total + char);
-        setTotal2('= ' + char);
-      }
-      else if (char === '+' || char === '-' || char === '*' || char === '/') {       
-        setTotal(total + char);
-      }
-      else {
-        setTotal(total + char);
-        setTotal2('= ' + eval(total + char));
-      }     
-    }    
-  };
-
-  // Delete the last char
+  // Delete the last char -> its working, but need tests
   function handleClearLastChar()
   {
-    setTotal(total.slice(0, -1))
+    if(total.slice(-1) === ''){
+      setTotal('');
+      setTotal2('0');
+      return
+    }
+    if(Number(total) < 10){
+      setTotal('');
+      setTotal2('0');
+      return
+    }
+    if(aux3.includes(total.charAt(total.length - 2)) === true){
+      setTotal(total.slice(0, -1));
+      setTotal2('= ' + eval(total.slice(0, -2)));
+    }
+    else{
+      setTotal(total.slice(0, -1));
+      setTotal2('= ' + eval(total.slice(0, -1)));
+    }
   }
 
   // Divide the number per 100 -> have bugs to fix
   function handlePercent(){
-    if (total.slice(-1) === '+'||total.slice(-1) === '-'||total.slice(-1) === '*'||total.slice(-1) === '/')
-        {
-          console.log('teste')  
-        }
-    else {
-      setTotal(eval(total));
-      setTotal2(eval(total));
-    }
+      setTotal(eval(total / 100));
+      setTotal2('= ' + eval(total / 100));
+      // After the first div, will bug.
   }
   
-  // Delete everything
+  // Delete everything -> its working, but need tests
   function handleClearTotal(){
     setTotal('');
     setTotal2('0');

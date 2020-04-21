@@ -19,19 +19,19 @@ export default StyleSheet.create({
     paddingTop: 10,
   },
 
+  detailsTextResult: {
+    textAlign: "right",
+    fontSize: 50,
+    color: "#FFFFFF",
+  },
+
   line: {
     marginTop: 10,
     height: 0.4,
     width: 360,
     alignSelf: "center",
     backgroundColor: '#FFFFFF'
-  },
-
-  detailsTextResult:{
-    textAlign: "right",
-    fontSize: 50,
-    color: "#FFFFFF"
-  },
+  },  
 
   buttonsCandDiv: {
     marginLeft: 20,
